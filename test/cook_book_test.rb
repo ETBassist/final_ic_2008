@@ -9,6 +9,7 @@ require './lib/cook_book.rb'
 
 class CookBookTest < MiniTest::Test
   def setup
+    Date.stubs(:today).returns(Date.new(2020, 4, 22))
     @ingredient1 = Ingredient.new({name: "Cheese", unit: "oz", calories: 100})
     @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
     @recipe1 = Recipe.new("Mac and Cheese")
@@ -48,7 +49,6 @@ class CookBookTest < MiniTest::Test
   end
 
   def test_can_give_date_created
-    Date.stubs(:today).returns(Date.new(2020, 4, 22))
     assert_equal "04-22-2020", @cookbook.date
   end
 end
