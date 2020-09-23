@@ -51,4 +51,39 @@ class CookBookTest < MiniTest::Test
   def test_can_give_date_created
     assert_equal "04-22-2020", @cookbook.date
   end
+
+  def test_it_can_give_summary_of_recipes
+    expected = [{
+      :name => "Cheese Burger", 
+      :details => {
+        :ingredients => [{
+          :ingredient => "Ground Beef",
+          :amount => "4 oz"
+        }, 
+          {
+          :ingredient => "Cheese",
+          :amount => "2 oz"
+        },
+          {
+           :ingredient => "Bun",
+           :amount => "1 g"
+        }],
+        :total_calories => 675
+      }},
+      {
+        :name => "Macaroni and Cheese",
+        :details =>  {
+          :ingredients => [{
+            :ingredient => "Macaroni",
+            :amount => "8 oz"
+          }, 
+        {
+          :ingredient => "Cheese",
+          :amount => "2 oz"
+          }],
+        :total_calories => 440
+      }},
+    ]
+    assert_equal expected, @cookbook.summary
+  end
 end
