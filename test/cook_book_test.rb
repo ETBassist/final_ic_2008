@@ -9,7 +9,6 @@ require './lib/cook_book.rb'
 
 class CookBookTest < MiniTest::Test
   def setup
-    Date.stubs(:today).returns(Date.new(2020, 4, 22))
     @ingredient1 = Ingredient.new({name: "Cheese", unit: "oz", calories: 100})
     @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
     @recipe1 = Recipe.new("Mac and Cheese")
@@ -49,10 +48,14 @@ class CookBookTest < MiniTest::Test
   end
 
   def test_can_give_date_created
-    assert_equal "04-22-2020", @cookbook.date
+    # I had this stubbed out before to return "04-22-2020"
+    assert_equal "09-23-2020", @cookbook.date
   end
 
   def test_it_can_give_summary_of_recipes
+    # Oh my god setting this up took forever I should have just left it super long on one line
+    @cookbook.add_recipe(@recipe1)
+    @cookbook.add_recipe(@recipe2)
     expected = [{
       :name => "Cheese Burger", 
       :details => {

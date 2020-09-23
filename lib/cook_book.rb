@@ -27,4 +27,10 @@ class CookBook
   def date
     @date.strftime("%m-%d-%Y")
   end
+
+  def summary
+    @recipes.map do |recipe|
+      recipe.ingredients_required
+    end
+  end
 end
