@@ -24,7 +24,7 @@ class RecipeTest < MiniTest::Test
   def test_it_can_add_required_ingredients
     @recipe1.add_ingredient(@ingredient1, 2)
     @recipe1.add_ingredient(@ingredient1, 4)
-    @recipe1.add_ingredient(@ingredient1, 8)
+    @recipe1.add_ingredient(@ingredient2, 8)
     expected = {
       @ingredient1 => 6,
       @ingredient2 => 8
